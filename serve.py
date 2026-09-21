@@ -158,7 +158,7 @@ def main():
     parser.add_argument('--port', type=int, default=3001)
     parser.add_argument('--db', default=str(Path(__file__).resolve().parent / 'runtime' / 'hokieday.sqlite3'))
     args = parser.parse_args()
-    server = AppServer(('127.0.0.1', args.port), Path(__file__).resolve().parent / 'ui', args.db, secure=os.getenv('HOKIEDAY_SECURE_COOKIE') == '1')
+    server = AppServer(('0.0.0.0', args.port), Path(__file__).resolve().parent / 'ui', args.db, secure=os.getenv('HOKIEDAY_SECURE_COOKIE') == '1')
     print(f'HokieFlow: http://127.0.0.1:{args.port}', flush=True)
     try:
         server.serve_forever()
